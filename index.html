@@ -35,23 +35,56 @@
       </div>
     </div>
 
-    <h2>Pesquisar Paleta</h2>
-        <div class="paleta-escolhida-espaco">
-            <div id="paleta-escolhida-input-espaco">
-                <input type="number" id="idPaleta" placeholder="Digite o ID da paleta e clique em 'Escolher'" />
-                <button id="idPaletaButton" onclick="findByIdPaletas()">ESCOLHER</button>
-            </div>
-            <div id="paletaEscolhida">
+    <h2>Paleta Escolhida:</h2>
+      <div>
+        <div id="paletaEscolhida">
+          Digite o ID da paleta e clique em "Escolher".
+        </div>
+        <div>
+          <input type="number" id="idPaleta" />
+          <button onclick="findPaletaById()">Escolher</button>
+        </div>
+      </div>
 
+      <section class="button-modal-create">
+        <button type="button" class="default-button" onclick="abrirModalCadastro()">Cadastrar Paleta</button>
+      </section>
+
+    <section class="modal-overlay" id="overlay">
+
+        <div class="modal">
+
+            <div class="modal-header">
+                <h2>Cadastrar uma paleta</h2>
+                <a onclick="fecharModalCadastro()" class="close-modal">x</a>
+            </div>
+
+            <div class="modal-body">
+                <div>
+                    <input type="text" name="sabor" id="sabor" placeholder="Sabor da Paleta">
+                    <input type="number" name="preco" id="preco" placeholder="Preço da Paleta">
+                    <textarea type="text" name="descricao" id="descricao" placeholder="Descrição da Paleta"
+                        rows="5"></textarea>
+                    <input type="text" name="foto" id="foto" placeholder="Link da Foto da Paleta">
+                    <button onclick="createPaleta()">Cadastrar</button>
+                </div>
             </div>
         </div>
+    </section>
 
-    <h2>Paletas Disponíveis:</h2>
-    <div class="Home__container">
-      <div class="PaletaLista" id="paletaList">
-      </div>
+    <div class="Home">
+          <h2>Paletas Disponíveis:</h2>
+          <div class="Home__container">
+            <div class="PaletaListaItem">
+              <div>
+                <div class="PaletaListaItem__sabor">Doce de Leite com Doce de Leite</div>
+                <div class="PaletaListaItem__preco">R$ 10,00</div>
+                <div class="PaletaListaItem__descricao">Quam vulputate dignissim suspendisse in est ante in nibh mauris.</div>
+              </div>
+                <img class="PaletaListaItem__foto" src=./assets/images/doce-de-leite-com-doce-de-leite.png alt="Paleta de Doce de Leite" />
+            </div>
+          </div>
     </div>
-  </div>
 
   <script src="script.js"></script>    
 </body>
