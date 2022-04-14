@@ -9,7 +9,7 @@ const findPaletaByIdController = (req, res) => {
   const idParam = req.params.id;
 
   if (!idParam) {
-    return res.status(404).send({ message: "Paleta não encontrada!" })
+    return res.status(404).send({ message: "Paleta não encontrada!" });
   }
 
   const chosenPaleta = paletasService.findPaletaByIdService(idParam);
@@ -27,7 +27,7 @@ const createPaletaController = (req, res) => {
     !paleta.preco
   ) {
     return res.send({ mensagem: "Você não preencheu todos os dados para adicionar uma nova paleta ao cardápio!" });
-
+  }
   const newPaleta = paletasService.createPaletaService(paleta);
   res.send(newPaleta);
 };
@@ -37,7 +37,7 @@ const updatePaletaController = (req, res) => {
   const paletaEdit = req.body;
 
   if (!idParam) {
-    return res.status(404).send({ message: "Paleta não encontrada!" })
+    return res.status(404).send({ message: "Paleta não encontrada!" });
   }
 
   if (!paletaEdit || !paletaEdit.sabor || !paletaEdit.descricao || !paletaEdit.foto || !paletaEdit.preco) {
@@ -59,7 +59,7 @@ const deletePaletaController = (req, res) => {
   res.send({ message: 'Paleta deletada com sucesso!' });
 };
 
-module.exports = 
+module.exports = {
   findPaletasController,
   findPaletaByIdController,
   createPaletaController,
