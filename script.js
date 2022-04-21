@@ -1,7 +1,7 @@
-const baseUrl = "http://localhost:3000/paletas";
+const baseURL = "http://localhost:3000/paletas";
 
 async function findAllPaletas() {
-  const response = await fetch(`${baseUrl}/find-paletas`);
+  const response = await fetch(`${baseURL}/all-paletas`);
 
   const paletas = await response.json();
 
@@ -29,7 +29,7 @@ async function findAllPaletas() {
 async function findByIdPaletas() {
   const id = document.querySelector("#idPaleta").value;
 
-  const response = await fetch(`${baseURL}/paleta/${id}`);
+  const response = await fetch(`${baseURL}/one-paleta/${id}`);
 
   const paleta = await response.json();
 
@@ -61,7 +61,7 @@ async function abrirModal(id = null) {
       "Atualizar uma Paleta";
     document.querySelector("#button-form-modal").innerText = "Atualizar";
 
-    const response = await fetch(`${baseURL}/paleta/${id}`);
+    const response = await fetch(`${baseURL}/one-paleta/${id}`);
     const paleta = await response.json();
 
     document.querySelector("#sabor").value = paleta.sabor;
@@ -104,7 +104,7 @@ async function createPaleta() {
 
   const modoEdicaoAtivado = id > 0;
 
-  const endpoint = baseUrl + (modoEdicaoAtivado ? `/update/${id}` : '/create');
+  const endpoint = baseURL + (modoEdicaoAtivado ? `/update-paleta/${id}` : `/create-paleta`);
 
   const response = await fetch(endpoint, {
     method: modoEdicaoAtivado ? "put" : "post",
@@ -157,7 +157,7 @@ function fecharModalDelete() {
 }
 
 async function deletePaleta(id) {
-  const response = await fetch(`${baseURL}/delete/${id}`, {
+  const response = await fetch(`${baseURL}/delete-paleta/${id}`, {
     method: "delete",
     headers: {
       "Content-Type": "application/json",
